@@ -9,7 +9,7 @@
 //    เพื่อไม่ต้องกรอกใหม่ทุกเครื่อง/ทุกเบราว์เซอร์
 // ---------------------------------------------------------------------
 const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwnPynw6EXYe1bs3sXZDaMAPjJqVBejAj2TBTP864YQn9f-PgVQCfmKpwMo1jYIow46Tw/exec";
-const SYNC_TOKEN = "change-this-token"; // ต้องตรงกับ SYNC_TOKEN ใน Code.gs
+const SYNC_TOKEN = "meen"; // ต้องตรงกับ SYNC_TOKEN ใน Code.gs
 
 // โมเดลออฟไลน์ (WebLLM) — เล็ก โหลดไว สนทนาไทยได้ในระดับพื้นฐาน
 const LOCAL_MODEL_ID = "Qwen2.5-1.5B-Instruct-q4f16_1-MLC";
