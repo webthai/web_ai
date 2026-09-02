@@ -8,7 +8,7 @@
 // 1) ค่าคงที่ที่แก้ไขได้ — ใส่ URL ของ Apps Script ที่ deploy แล้วตรงนี้
 //    เพื่อไม่ต้องกรอกใหม่ทุกเครื่อง/ทุกเบราว์เซอร์
 // ---------------------------------------------------------------------
-const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwumKC-DPvZcycvROs6rdpdoW1x_sCk9GNr6RSBi0_9sXMTqW3guxaeyTv0DckOxAv_/exec"; // เช่น "https://script.google.com/macros/s/XXXXXXXX/exec"
+const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwumKC-DPvZcycvROs6rdpdoW1x_sCk9GNr6RSBi0_9sXMTqW3guxaeyTv0DckOxAv_/exec";
 const SYNC_TOKEN = "change-this-token"; // ต้องตรงกับ SYNC_TOKEN ใน Code.gs
 
 // โมเดลออฟไลน์ (WebLLM) — เล็ก โหลดไว สนทนาไทยได้ในระดับพื้นฐาน
@@ -16,7 +16,7 @@ const LOCAL_MODEL_ID = "Qwen2.5-1.5B-Instruct-q4f16_1-MLC";
 
 // ผู้ดูแลระบบคนเดียว: เก็บเป็น SHA-256("username:password") ไม่เก็บ plaintext
 // ค่าเริ่มต้นนี้คือแฮชของ meen:5340 — เปลี่ยนได้ด้วยฟังก์ชัน hashCredential() ด้านล่าง (ดู README)
-const ADMIN_CRED_HASH = "a4d4cf2ab9ee20df6d658b52ca8d04ebe97709ce233640ab50a56f8ef9a6f96";
+const ADMIN_CRED_HASH = "a4d4cf2ab9ee20df6d658b52ca8d04ebe97709ce233640ab50a56f8ef9a6f96a";
 
 // ---------------------------------------------------------------------
 // 2) Utilities
