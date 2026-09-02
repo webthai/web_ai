@@ -8,7 +8,7 @@
 // 1) ค่าคงที่ที่แก้ไขได้ — ใส่ URL ของ Apps Script ที่ deploy แล้วตรงนี้
 //    เพื่อไม่ต้องกรอกใหม่ทุกเครื่อง/ทุกเบราว์เซอร์
 // ---------------------------------------------------------------------
-const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwumKC-DPvZcycvROs6rdpdoW1x_sCk9GNr6RSBi0_9sXMTqW3guxaeyTv0DckOxAv_/exec";
+const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwnPynw6EXYe1bs3sXZDaMAPjJqVBejAj2TBTP864YQn9f-PgVQCfmKpwMo1jYIow46Tw/exec";
 const SYNC_TOKEN = "change-this-token"; // ต้องตรงกับ SYNC_TOKEN ใน Code.gs
 
 // โมเดลออฟไลน์ (WebLLM) — เล็ก โหลดไว สนทนาไทยได้ในระดับพื้นฐาน
