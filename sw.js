@@ -1,5 +1,5 @@
 // เวอร์ชันแคช — เปลี่ยนเลขนี้ทุกครั้งที่แก้ไฟล์ static เพื่อบังคับให้เบราว์เซอร์ดึงของใหม่
-const CACHE_NAME = "offline-ai-chat-v1";
+const CACHE_NAME = "offline-ai-chat-v2";
 
 const ASSETS = [
   "./",
