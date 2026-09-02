@@ -1,0 +1,13 @@
+{
+  "name": "คุยกับ AI — ออนไลน์/ออฟไลน์",
+  "short_name": "คุยกับ AI",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#12141C",
+  "theme_color": "#12141C",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

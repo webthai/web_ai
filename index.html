@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>คุยกับ AI • ออนไลน์/ออฟไลน์</title>
+<meta name="theme-color" content="#12141C">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== LOGIN SCREEN ===================== -->
+<div id="loginScreen" class="screen">
+  <form id="loginForm" class="login-card">
+    <div class="login-mark">คุยกับ AI</div>
+    <p class="login-sub">เข้าสู่ระบบเพื่อเริ่มแชท ใช้ได้ทั้งออนไลน์และออฟไลน์</p>
+    <label class="field">
+      <span>ชื่อผู้ใช้</span>
+      <input id="loginUser" type="text" autocomplete="username" required>
+    </label>
+    <label class="field">
+      <span>รหัสผ่าน</span>
+      <input id="loginPass" type="password" autocomplete="current-password" required>
+    </label>
+    <button type="submit" class="btn-primary">เข้าสู่ระบบ</button>
+    <p id="loginError" class="login-error" hidden>ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</p>
+  </form>
+</div>
+
+<!-- ===================== APP SHELL ===================== -->
+<div id="appShell" class="screen" hidden>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">คุยกับ AI</span>
+    </div>
+
+    <button id="statusPill" class="status-pill" type="button" aria-haspopup="true" aria-expanded="false">
+      <span class="status-dot"></span>
+      <span id="statusLabel">กำลังตรวจสอบ…</span>
+    </button>
+
+    <button id="menuBtn" class="icon-btn" aria-label="เมนู" type="button">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="12" cy="5" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="12" cy="19" r="1.4"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- settings / engine panel -->
+  <div id="panel" class="panel" hidden>
+    <div class="panel-row">
+      <div>
+        <div class="panel-title">โหมดการตอบ</div>
+        <div class="panel-hint">อัตโนมัติจะสลับตามสถานะอินเทอร์เน็ต</div>
+      </div>
+      <select id="engineSelect" class="select">
+        <option value="auto">อัตโนมัติ</option>
+        <option value="cloud">คลาวด์เท่านั้น</option>
+        <option value="local">ในเครื่องเท่านั้น</option>
+      </select>
+    </div>
+
+    <div class="panel-row">
+      <div>
+        <div class="panel-title">โมเดลในเครื่อง (ออฟไลน์)</div>
+        <div class="panel-hint" id="localModelHint">ยังไม่ได้โหลด — ต้องต่อเน็ตครั้งแรก</div>
+      </div>
+      <button id="loadLocalBtn" class="btn-secondary" type="button">โหลดโมเดล</button>
+    </div>
+    <div id="localProgressWrap" class="progress-wrap" hidden>
+      <div id="localProgressBar" class="progress-bar"></div>
+    </div>
+
+    <div class="panel-row column">
+      <div>
+        <div class="panel-title">Gemini API Key (คลาวด์)</div>
+        <div class="panel-hint">รับฟรีที่ Google AI Studio แล้ววางไว้ที่นี่ เก็บในเครื่องนี้เท่านั้น</div>
+      </div>
+      <input id="apiKeyInput" class="text-input" type="password" placeholder="วาง API key ที่นี่">
+    </div>
+
+    <div class="panel-row column">
+      <div>
+        <div class="panel-title">Apps Script URL (สำรองข้อมูล)</div>
+        <div class="panel-hint">ไม่จำเป็นต้องกรอก ถ้ากรอกไว้แล้วในโค้ด</div>
+      </div>
+      <input id="scriptUrlInput" class="text-input" type="text" placeholder="https://script.google.com/macros/s/…/exec">
+    </div>
+
+    <div class="panel-row">
+      <button id="saveSettingsBtn" class="btn-primary" type="button">บันทึกการตั้งค่า</button>
+      <button id="logoutBtn" class="btn-ghost" type="button">ออกจากระบบ</button>
+    </div>
+  </div>
+
+  <main id="chatLog" class="chat-log" aria-live="polite"></main>
+
+  <div id="emptyState" class="empty-state">
+    <div class="empty-mark">＋</div>
+    <p>เริ่มพิมพ์ข้อความแรกได้เลย ระบบจะเก็บไว้ในเครื่องเสมอ<br>แล้วซิงก์ขึ้นคลาวด์อัตโนมัติเมื่อมีเน็ต</p>
+  </div>
+
+  <form id="composer" class="composer">
+    <textarea id="messageInput" rows="1" placeholder="พิมพ์ข้อความ…" required></textarea>
+    <button type="submit" class="send-btn" aria-label="ส่ง">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M4 12l16-7-6.5 16-2.5-6.5L4 12z"/>
+      </svg>
+    </button>
+  </form>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
